@@ -41,8 +41,9 @@ with open('example-contributions.json', 'r') as exampleResponse:
     responseData = json.load(exampleResponse)
     chart = calendarparser.createChartData(responseData)
     y = 0
-
+    
     for row in chart:
+        print(row)
         x = 0
         for pixel in row:
             print('Pixel ' + pixel)
