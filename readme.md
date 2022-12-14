@@ -26,3 +26,9 @@ usersecrets = {
     'githubtoken' : 'YOUR_TOKEN_HERE'
 }
 ```
+
+# If you get an error with numpy install the dependencies another way 
+
+```bash 
+sudo apt-get install libatlas-base-dev
+```

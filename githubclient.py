@@ -34,16 +34,18 @@ u_width, u_height = unicornhatmini.get_shape()
 # print(githubResult.text)
 # print()
 
+
+
 # Using the example file as data source
 with open('example-contributions.json', 'r') as exampleResponse:
     responseData = json.load(exampleResponse)
     chart = calendarparser.createChartData(responseData)
-    print(chart)
     y = 0
 
     for row in chart:
         x = 0
         for pixel in row:
+            print('Pixel ' + pixel)
             if pixel == '0':
                 unicornhatmini.set_pixel(x, y, 0, 0, 0)
             elif pixel == '1':
