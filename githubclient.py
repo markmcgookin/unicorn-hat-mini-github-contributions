@@ -61,5 +61,5 @@ with open('example-contributions.json', 'r') as exampleResponse:
                 unicornhatmini.set_pixel(x, y, 0, 255, 0)
             elif int(pixel) > 4:
                 unicornhatmini.set_pixel(x, y, 0, 255, 0)
-            x += 1
-        y += 1
+            x = x + 1
+        y = y + 1
