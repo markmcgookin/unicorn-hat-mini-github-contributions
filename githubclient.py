@@ -41,7 +41,7 @@ try:
         githubResult = requests.post(githubUrl, json={'query': githubQuery}, headers={'Authorization': bearerToken})
         print(githubResult.status_code)
         #print(githubResult.text)
-        responseData = json.load(githubResult.text)
+        responseData = json.loads(githubResult.text)
         chart = calendarparser.createChartData(responseData, 17)
         y = 0
         
