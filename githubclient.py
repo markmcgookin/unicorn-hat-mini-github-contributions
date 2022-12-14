@@ -41,7 +41,7 @@ try:
         
         githubResult = requests.post(githubUrl, json={'query': githubQuery}, headers={'Authorization': bearerToken})
         print(githubResult.status_code)
-
+        print(githubResult)
         chart = calendarparser.createChartData(githubResult, 17)
         y = 0
         
@@ -73,8 +73,6 @@ try:
 
 except KeyboardInterrupt:
     pass
-
-
 
 
 # Using the example file as data source
