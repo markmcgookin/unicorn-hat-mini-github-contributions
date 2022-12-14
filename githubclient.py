@@ -41,8 +41,8 @@ try:
         
         githubResult = requests.post(githubUrl, json={'query': githubQuery}, headers={'Authorization': bearerToken})
         print(githubResult.status_code)
-        print(githubResult)
-        chart = calendarparser.createChartData(githubResult, 17)
+        print(githubResult.text)
+        chart = calendarparser.createChartData(githubResult.text, 17)
         y = 0
         
         for row in chart:
