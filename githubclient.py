@@ -7,7 +7,7 @@ from usersecrets import usersecrets
 from unicornhatmini import UnicornHATMini
 
 unicornhatmini = UnicornHATMini()
-unicornhatmini.set_brightness(0.1)
+unicornhatmini.set_brightness(0.05)
 unicornhatmini.set_rotation(0)
 u_width, u_height = unicornhatmini.get_shape()
 
@@ -49,7 +49,7 @@ try:
             y = 0
             
             for row in chart:
-                print("row: " + row)
+                #print("row: " + row)
                 x = 0
                 for pixel in row.split(","):
                     print("x: " + str(x))
