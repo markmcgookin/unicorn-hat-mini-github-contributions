@@ -48,21 +48,20 @@ with open('example-contributions.json', 'r') as exampleResponse:
     for row in chart:
         print("row: " + row)
         x = 0
-        for pixel in row:
-            if(pixel != ','):
-                print("x: " + str(x))
-                print('Pixel ' + pixel)
-                if pixel == '0':
-                    unicornhatmini.set_pixel(x, y, 0, 0, 0)
-                elif pixel == '1':
-                    unicornhatmini.set_pixel(x, y, 0, 32, 0)
-                elif pixel == '2':
-                    unicornhatmini.set_pixel(x, y, 0, 64, 0)
-                elif pixel == '3':
-                    unicornhatmini.set_pixel(x, y, 0, 128, 0)
-                elif pixel == '4':
-                    unicornhatmini.set_pixel(x, y, 0, 255, 0)
-                elif int(pixel) > 4:
-                    unicornhatmini.set_pixel(x, y, 0, 255, 0)
-                x = x + 1
+        for pixel in row.split(","):
+            print("x: " + str(x))
+            print('Pixel ' + pixel)
+            if pixel == '0':
+                unicornhatmini.set_pixel(x, y, 0, 0, 0)
+            elif pixel == '1':
+                unicornhatmini.set_pixel(x, y, 0, 32, 0)
+            elif pixel == '2':
+                unicornhatmini.set_pixel(x, y, 0, 64, 0)
+            elif pixel == '3':
+                unicornhatmini.set_pixel(x, y, 0, 128, 0)
+            elif pixel == '4':
+                unicornhatmini.set_pixel(x, y, 0, 255, 0)
+            elif int(pixel) > 4:
+                unicornhatmini.set_pixel(x, y, 0, 255, 0)
+            x = x + 1
         y = y + 1
