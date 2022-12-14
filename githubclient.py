@@ -10,6 +10,10 @@ unicornhatmini.set_brightness(0.1)
 unicornhatmini.set_rotation(0)
 u_width, u_height = unicornhatmini.get_shape()
 
+print("Dimensions: ")
+print("Width: " + u_width)
+print("Height: " + u_height)
+
 # githubQuery = """query { 
 #   user(login: "markmcgookin"){
 #     contributionsCollection {
