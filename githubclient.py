@@ -14,9 +14,9 @@ u_width, u_height = unicornhatmini.get_shape()
 print("Dimensions: ")
 print("Width: " + str(u_width))
 print("Height: " + str(u_height))
-
+quote = "\""
 githubQuery = """query { 
-  user(login: """ + usersecrets["githubusername"] + """){
+  user(login: """ + quote + usersecrets["githubusername"] + quote + """ ){
     contributionsCollection {
       contributionCalendar {
         totalContributions

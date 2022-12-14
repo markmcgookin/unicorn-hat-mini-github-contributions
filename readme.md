@@ -21,9 +21,10 @@ Go to https://github.com/settings/tokens and generate a CLASSIC token. It needs 
 Create a file called usersecrets with this content and place your token in it
 
 ```python
-# Write your code here :-)
+# Add your secrets here.
 usersecrets = {
-    'githubtoken' : 'YOUR_TOKEN_HERE'
+    "githubusername" : "SOMEUSERNAME",
+    "githubtoken" : "SOMETOKEN"
 }
 ```
 
