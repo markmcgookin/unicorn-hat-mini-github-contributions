@@ -47,6 +47,7 @@ with open('example-contributions.json', 'r') as exampleResponse:
         x = 0
         print("x: " + str(x))
         for pixel in row:
+            print("x: " + str(x))
             print('Pixel ' + pixel)
             if pixel == '0':
                 unicornhatmini.set_pixel(x, y, 0, 0, 0)
