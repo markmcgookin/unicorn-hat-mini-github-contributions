@@ -43,8 +43,9 @@ with open('example-contributions.json', 'r') as exampleResponse:
     y = 0
     
     for row in chart:
-        print(row)
+        print("row: " + row)
         x = 0
+        print("x: " + str(x))
         for pixel in row:
             print('Pixel ' + pixel)
             if pixel == '0':
