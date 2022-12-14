@@ -16,7 +16,7 @@ print("Width: " + str(u_width))
 print("Height: " + str(u_height))
 
 githubQuery = """query { 
-  user(login: "YOUR_LOGIN_NAME_HERE"){
+  user(login: """ + usersecrets["githubusername"] + """){
     contributionsCollection {
       contributionCalendar {
         totalContributions
