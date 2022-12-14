@@ -39,11 +39,10 @@ print("Height: " + str(u_height))
 # print()
 
 
-
 # Using the example file as data source
 with open('example-contributions.json', 'r') as exampleResponse:
     responseData = json.load(exampleResponse)
-    chart = calendarparser.createChartData(responseData)
+    chart = calendarparser.createChartData(responseData, 17)
     y = 0
     
     for row in chart:
