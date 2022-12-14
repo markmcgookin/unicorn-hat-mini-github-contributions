@@ -70,7 +70,9 @@ try:
                 y = y + 1
 
         unicornhatmini.show()
-        time.sleep(1.0 / 60.0)
+
+        # Only check this once an hour... because who cares
+        time.sleep(60 * 60)
 
 except KeyboardInterrupt:
     pass
