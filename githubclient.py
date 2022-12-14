@@ -2,6 +2,7 @@ import requests
 import json
 import pandas as pd
 import calendarparser
+import time
 from usersecrets import usersecrets
 from unicornhatmini import UnicornHATMini
 
@@ -38,30 +39,38 @@ print("Height: " + str(u_height))
 # print(githubResult.text)
 # print()
 
+try:
+    while True:
 
-# Using the example file as data source
-with open('example-contributions.json', 'r') as exampleResponse:
-    responseData = json.load(exampleResponse)
-    chart = calendarparser.createChartData(responseData, 17)
-    y = 0
-    
-    for row in chart:
-        print("row: " + row)
-        x = 0
-        for pixel in row.split(","):
-            print("x: " + str(x))
-            print('Pixel ' + pixel)
-            if pixel == '0':
-                unicornhatmini.set_pixel(x, y, 0, 0, 0)
-            elif pixel == '1':
-                unicornhatmini.set_pixel(x, y, 0, 32, 0)
-            elif pixel == '2':
-                unicornhatmini.set_pixel(x, y, 0, 64, 0)
-            elif pixel == '3':
-                unicornhatmini.set_pixel(x, y, 0, 128, 0)
-            elif pixel == '4':
-                unicornhatmini.set_pixel(x, y, 0, 255, 0)
-            elif int(pixel) > 4:
-                unicornhatmini.set_pixel(x, y, 0, 255, 0)
-            x = x + 1
-        y = y + 1
+        # Using the example file as data source
+        with open('example-contributions.json', 'r') as exampleResponse:
+            responseData = json.load(exampleResponse)
+            chart = calendarparser.createChartData(responseData, 17)
+            y = 0
+            
+            for row in chart:
+                print("row: " + row)
+                x = 0
+                for pixel in row.split(","):
+                    print("x: " + str(x))
+                    print('Pixel ' + pixel)
+                    if pixel == '0':
+                        unicornhatmini.set_pixel(x, y, 0, 0, 0)
+                    elif pixel == '1':
+                        unicornhatmini.set_pixel(x, y, 0, 32, 0)
+                    elif pixel == '2':
+                        unicornhatmini.set_pixel(x, y, 0, 64, 0)
+                    elif pixel == '3':
+                        unicornhatmini.set_pixel(x, y, 0, 128, 0)
+                    elif pixel == '4':
+                        unicornhatmini.set_pixel(x, y, 0, 255, 0)
+                    elif int(pixel) > 4:
+                        unicornhatmini.set_pixel(x, y, 0, 255, 0)
+                    x = x + 1
+                y = y + 1
+
+        unicornhatmini.show()
+        time.sleep(1.0 / 60.0)
+
+except KeyboardInterrupt:
+    pass
