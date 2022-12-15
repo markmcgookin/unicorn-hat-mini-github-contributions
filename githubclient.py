@@ -11,6 +11,15 @@ unicornhatmini.set_brightness(0.05)
 unicornhatmini.set_rotation(0)
 u_width, u_height = unicornhatmini.get_shape()
 
+def resetScreen():
+  for y in range(6):
+    for x in range(16):
+      unicornhatmini.set_pixel(x, y, 255, 0, 0)
+      unicornhatmini.show()
+      
+    time.sleep(0.2)
+  time.sleep(2)
+
 print("Dimensions: ")
 print("Width: " + str(u_width))
 print("Height: " + str(u_height))
@@ -38,6 +47,7 @@ bearerToken = "Bearer " + usersecrets["githubtoken"]
 ## Using the live github API
 try:
     while True:
+        resetScreen()
         githubResult = requests.post(githubUrl, json={'query': githubQuery}, headers={'Authorization': bearerToken})
         print(githubResult.status_code)
         #print(githubResult.text)
