@@ -74,9 +74,9 @@ try:
                 elif int(pixel) > 4:
                     unicornhatmini.set_pixel(x, y, 0, 255, 0)
                 x = x + 1
-            y = y + 1
+                unicornhatmini.show()
 
-        unicornhatmini.show()
+            y = y + 1
 
         # Only check this once every 5 mins
         time.sleep(60 * 5)
