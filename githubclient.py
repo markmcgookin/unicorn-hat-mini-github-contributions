@@ -12,8 +12,8 @@ unicornhatmini.set_rotation(0)
 u_width, u_height = unicornhatmini.get_shape()
 
 def resetScreen():
-  for y in range(6):
-    for x in range(16):
+  for y in range(7):
+    for x in range(17):
       unicornhatmini.set_pixel(x, y, 255, 0, 0)
       unicornhatmini.show()
       
