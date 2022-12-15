@@ -30,46 +30,35 @@ def createChartData(githubJson, numberOfWeeks = 52):
         weeks = reducedWeeks
 
     for week in weeks:
-            #print(len(week["contributionDays"]))
-            if len(week["contributionDays"]) == 7:
-                #Normal full week
+            numOfDays = len(week["contributionDays"]) - 1
+            if(numOfDays >= 0):
                 sundays.append(week["contributionDays"][0]["contributionCount"])
+            else:
+                sundays.append(0)
+            if(numOfDays >= 1):
                 mondays.append(week["contributionDays"][1]["contributionCount"])
+            else:
+                mondays.append(0)
+            if(numOfDays >= 2):
                 tuesdays.append(week["contributionDays"][2]["contributionCount"])
+            else:
+                tuesdays.append(0)
+            if(numOfDays >= 3):
                 wednesdays.append(week["contributionDays"][3]["contributionCount"])
+            else:
+                wednesdays.append(0)
+            if(numOfDays >= 4):
                 thursdays.append(week["contributionDays"][4]["contributionCount"])
+            else:
+                thursdays.append(0)
+            if(numOfDays >= 5):
                 fridays.append(week["contributionDays"][5]["contributionCount"])
+            else:
+                fridays.append(0)
+            if(numOfDays >= 6):
                 saturdays.append(week["contributionDays"][6]["contributionCount"])
             else:
-                numOfDays = len(week["contributionDays"]) - 1
-                if(numOfDays >= 0):
-                    sundays.append(week["contributionDays"][0]["contributionCount"])
-                else:
-                    sundays.append(0)
-                if(numOfDays >= 1):
-                    mondays.append(week["contributionDays"][1]["contributionCount"])
-                else:
-                    mondays.append(0)
-                if(numOfDays >= 2):
-                    tuesdays.append(week["contributionDays"][2]["contributionCount"])
-                else:
-                    tuesdays.append(0)
-                if(numOfDays >= 3):
-                    wednesdays.append(week["contributionDays"][3]["contributionCount"])
-                else:
-                    wednesdays.append(0)
-                if(numOfDays >= 4):
-                    thursdays.append(week["contributionDays"][4]["contributionCount"])
-                else:
-                    thursdays.append(0)
-                if(numOfDays >= 5):
-                    fridays.append(week["contributionDays"][5]["contributionCount"])
-                else:
-                    fridays.append(0)
-                if(numOfDays >= 6):
-                    saturdays.append(week["contributionDays"][6]["contributionCount"])
-                else:
-                    saturdays.append(0)
+                saturdays.append(0)
 
     sundaysString = ','.join(map(str, sundays))
     mondaysString = ','.join(map(str, mondays))
