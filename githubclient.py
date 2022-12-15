@@ -78,8 +78,8 @@ try:
 
         unicornhatmini.show()
 
-        # Only check this once an hour... because who cares
-        time.sleep(60 * 60)
+        # Only check this once every 5 mins
+        time.sleep(60 * 5)
 
 except KeyboardInterrupt:
     pass
