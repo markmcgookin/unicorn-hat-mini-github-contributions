@@ -6,12 +6,12 @@ Update pip
 python3.10 -m pip install --upgrade pip
 ```
 
-install dependencies 
+install dependencies (-H will install them in the Pi's home directory not the pi users one)
 
 ```python 
-pip3 install requests
-pip3 install pandas
-pip3 install unicornhatmini
+sudo -H pip3 install requests
+sudo -H pip3 install pandas
+sudo -H pip3 install unicornhatmini
 ```
 
 # Github Token
@@ -33,3 +33,32 @@ usersecrets = {
 ```bash 
 sudo apt-get install libatlas-base-dev
 ```
+
+# Setup to run automatically
+
+Make script executable
+
+```bash
+chmod 755 launcher.sh
+```
+
+create a logs directory in your home folder
+
+```bash
+cd
+mkdir logs
+```
+
+edit the crontab
+
+```bash
+sudo crontab -e
+```
+
+and add this line
+
+```bash
+@reboot sh /home/pi/unicorn-hat-mini-github-contributions/launcher.sh >/home/pi/logs/cronlog 2>&1
+```
+
+then just reboot the pi
