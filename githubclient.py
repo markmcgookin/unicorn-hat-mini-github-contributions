@@ -122,13 +122,13 @@ try:
             for pixel in row.split(","):
                   if pixel == '0':
                     unicornhatmini.set_pixel(x, y, colours["0"]["r"], colours["0"]["g"], colours["0"]["b"])
-                  elif pixel == '1'| pixel == '2':
+                  elif pixel == '1' or pixel == '2':
                     unicornhatmini.set_pixel(x, y, colours["1-2"]["r"], colours["1-2"]["g"], colours["1-2"]["b"])
-                  elif pixel == '3'| pixel == '4'| pixel == '5':
+                  elif pixel == '3' or pixel == '4' or pixel == '5':
                     unicornhatmini.set_pixel(x, y, colours["3-5"]["r"], colours["3-5"]["g"], colours["3-5"]["b"])
-                  elif pixel == '6' | pixel == '7'| pixel == '8'| pixel == '9'| pixel == '10':
+                  elif pixel == '6' or pixel == '7' or pixel == '8' or pixel == '9' or pixel == '10':
                     unicornhatmini.set_pixel(x, y, colours["6-10"]["r"], colours["6-10"]["g"], colours["6-10"]["b"])
-                  elif '11' | pixel == '12' | pixel == '13' | pixel == '14'| pixel == '15':
+                  elif '11' or pixel == '12' or pixel == '13' or pixel == '14' or pixel == '15':
                     unicornhatmini.set_pixel(x, y, colours["11-15"]["r"], colours["11-15"]["g"], colours["11-15"]["b"])
                   else:
                     unicornhatmini.set_pixel(x, y, colours["more"]["r"], colours["more"]["g"], colours["more"]["b"])
