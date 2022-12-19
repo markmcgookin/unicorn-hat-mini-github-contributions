@@ -120,22 +120,22 @@ try:
         for row in chart:
             x = 0
             for pixel in row.split(","):
-                match pixel:
-                  case '0':
+                  if pixel == '0':
                     unicornhatmini.set_pixel(x, y, colours["0"]["r"], colours["0"]["g"], colours["0"]["b"])
-                  case '1'|'2':
+                  elif pixel == '1'| pixel == '2':
                     unicornhatmini.set_pixel(x, y, colours["1-2"]["r"], colours["1-2"]["g"], colours["1-2"]["b"])
-                  case '3'|'4'|'5':
+                  elif pixel == '3'| pixel == '4'| pixel == '5':
                     unicornhatmini.set_pixel(x, y, colours["3-5"]["r"], colours["3-5"]["g"], colours["3-5"]["b"])
-                  case '6'|'7'|'8'|'9'|'10':
+                  elif pixel == '6' | pixel == '7'| pixel == '8'| pixel == '9'| pixel == '10':
                     unicornhatmini.set_pixel(x, y, colours["6-10"]["r"], colours["6-10"]["g"], colours["6-10"]["b"])
-                  case '11'|'12'|'13'|'14'|'15':
+                  elif '11' | pixel == '12' | pixel == '13' | pixel == '14'| pixel == '15':
                     unicornhatmini.set_pixel(x, y, colours["11-15"]["r"], colours["11-15"]["g"], colours["11-15"]["b"])
-                  case _:
+                  else:
                     unicornhatmini.set_pixel(x, y, colours["more"]["r"], colours["more"]["g"], colours["more"]["b"])
-                x = x + 1
-                unicornhatmini.show()
-
+                  
+                  x = x + 1
+                  unicornhatmini.show()
+            
             y = y + 1
 
         # Only check this once every 5 mins
