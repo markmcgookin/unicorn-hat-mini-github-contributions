@@ -24,9 +24,44 @@ Create a file called usersecrets with this content and place your token in it
 # Add your secrets here.
 usersecrets = {
     "githubusername" : "SOMEUSERNAME",
-    "githubtoken" : "SOMETOKEN"
+    "githubtoken" : "SOMETOKEN",
+    "defaultColours": "true",
+    "altColours": {
+        "0": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+        },
+        "1-2": {
+            "r": 255,
+            "g": 0,
+            "b": 0,
+        },
+        "3-5": {
+            "r": 127,
+            "g": 0,
+            "b": 128,
+        },
+        "6-10": {
+            "r": 0,
+            "g": 0,
+            "b": 255,
+        },
+        "11-15": {
+            "r": 0,
+            "g": 127,
+            "b": 128,
+        },
+        "more": {
+            "r": 0,
+            "g": 255,
+            "b": 0,
+        }
+    }
 }
 ```
+# Custom colours
+If you want to use your own custom colours for the bandings, specify them in the `altColours` property, and set `defaultColours` to `"false"`
 
 # If you get an error with numpy install the dependencies another way 
 
