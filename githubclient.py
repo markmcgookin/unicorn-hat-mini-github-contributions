@@ -163,6 +163,7 @@ try:
         # Turn off today every other second
         if (timecount % 2) == 0:
           unicornhatmini.set_pixel(16, day_index, 0, 0, 0)
+          unicornhatmini.show()
 
         # Wait for a second
         timecount = timecount + 1
