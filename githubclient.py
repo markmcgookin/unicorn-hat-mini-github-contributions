@@ -128,6 +128,7 @@ try:
               
         # Monday = 0
         day_as_int = datetime.now().weekday()
+        print("Day: " + str(day_as_int))
         
         # Sunday is the top row for us, so we start there. 
         # add one to bump the index along, if it's 8 - put it to zero
@@ -135,6 +136,8 @@ try:
         day_index = day_as_int + 1
         if day_index == 8:
           day_index = 0
+          
+        print("Day: " + str(day_as_int))
         
         # Turn off today every other second
         if (timecount % 2) == 0:
