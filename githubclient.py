@@ -2,8 +2,8 @@ import requests
 import json
 import pandas as pd
 import calendarparser
-from datetime import datetime
 import time
+from datetime import datetime
 from usersecrets import usersecrets
 from unicornhatmini import UnicornHATMini
 
@@ -89,9 +89,9 @@ bearerToken = "Bearer " + usersecrets["githubtoken"]
 timecount = POLL_TIME
 try:
     while True:
-
+      
         # Has it been 5 mins since our last github poll?
-        if timecount >= POLL_TIME:        
+        if timecount >= POLL_TIME:  
           resetScreen()
           githubResult = requests.post(githubUrl, json={'query': githubQuery}, headers={'Authorization': bearerToken})
           print(githubResult.status_code)
@@ -100,38 +100,59 @@ try:
           chart = calendarparser.createChartData(responseData, 17)
           y = 0
           
+          colours = getColours()
+          # for row in chart:
+          #     x = 0
+          #     for pixel in row.split(","):
+          #         print("x: " + str(x))
+          #         print('Pixel ' + pixel)
+          #         if pixel == '0':
+          #             unicornhatmini.set_pixel(x, y, 0, 0, 0)
+          #         elif pixel == '1':
+          #             unicornhatmini.set_pixel(x, y, 0, 32, 0)
+          #         elif pixel == '2':
+          #             unicornhatmini.set_pixel(x, y, 0, 64, 0)
+          #         elif pixel == '3':
+          #             unicornhatmini.set_pixel(x, y, 0, 128, 0)
+          #         elif pixel == '4':
+          #             unicornhatmini.set_pixel(x, y, 0, 255, 0)
+          #         elif int(pixel) > 4:
+          #             unicornhatmini.set_pixel(x, y, 0, 255, 0)
+          #         x = x + 1
+          #         unicornhatmini.show()
+
+          #     y = y + 1
+
           for row in chart:
-              #print("row: " + row)
               x = 0
               for pixel in row.split(","):
-                  print("x: " + str(x))
-                  print('Pixel ' + pixel)
-                  if pixel == '0':
-                      unicornhatmini.set_pixel(x, y, 0, 0, 0)
-                  elif pixel == '1':
-                      unicornhatmini.set_pixel(x, y, 0, 32, 0)
-                  elif pixel == '2':
-                      unicornhatmini.set_pixel(x, y, 0, 64, 0)
-                  elif pixel == '3':
-                      unicornhatmini.set_pixel(x, y, 0, 128, 0)
-                  elif pixel == '4':
-                      unicornhatmini.set_pixel(x, y, 0, 255, 0)
-                  elif int(pixel) > 4:
-                      unicornhatmini.set_pixel(x, y, 0, 255, 0)
-                  x = x + 1
-                  unicornhatmini.show()
-
+                    if pixel == '0':
+                      unicornhatmini.set_pixel(x, y, colours["0"]["r"], colours["0"]["g"], colours["0"]["b"])
+                    elif pixel == '1' or pixel == '2':
+                      unicornhatmini.set_pixel(x, y, colours["1-2"]["r"], colours["1-2"]["g"], colours["1-2"]["b"])
+                    elif pixel == '3' or pixel == '4' or pixel == '5':
+                      unicornhatmini.set_pixel(x, y, colours["3-5"]["r"], colours["3-5"]["g"], colours["3-5"]["b"])
+                    elif pixel == '6' or pixel == '7' or pixel == '8' or pixel == '9' or pixel == '10':
+                      unicornhatmini.set_pixel(x, y, colours["6-10"]["r"], colours["6-10"]["g"], colours["6-10"]["b"])
+                    elif '11' or pixel == '12' or pixel == '13' or pixel == '14' or pixel == '15':
+                      unicornhatmini.set_pixel(x, y, colours["11-15"]["r"], colours["11-15"]["g"], colours["11-15"]["b"])
+                    else:
+                      unicornhatmini.set_pixel(x, y, colours["more"]["r"], colours["more"]["g"], colours["more"]["b"])
+                    
+                    x = x + 1
+                    unicornhatmini.show()
+              
               y = y + 1
               
               # Reset the clock
               timecount = 0
-              
+
         # Monday = 0
         day_as_int = datetime.now().weekday()
         print("Day: " + str(day_as_int))
         
         # Sunday is the top row for us, so we start there. 
-        # add one to bump the index along, if it's 8 - put it to zero
+        # add one to bump the index along, if it's 8 - put it to zero
         # day now lines up with our rows
         day_index = day_as_int + 1
         if day_index == 8:
