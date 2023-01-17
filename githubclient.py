@@ -165,6 +165,7 @@ try:
           unicornhatmini.set_pixel(16, day_index, 0, 0, 0)
 
         # Wait for a second
+        timecount = timecount + 1
         time.sleep(1)
 
 except KeyboardInterrupt:
