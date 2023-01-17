@@ -87,8 +87,21 @@ bearerToken = "Bearer " + usersecrets["githubtoken"]
 
 ## Using the live github API
 timecount = POLL_TIME
+todayR = 0
+todayG = 0
+todayB  = 0
 try:
     while True:
+      
+        # Monday = 0
+        day_as_int = datetime.now().weekday()
+        
+        # Sunday is the top row for us, so we start there. 
+        # add one to bump the index along, if it's 8 - put it to zero
+        # day now lines up with our rows
+        day_index = day_as_int + 1
+        if day_index == 8:
+          day_index = 0
       
         # Has it been 5 mins since our last github poll?
         if timecount >= POLL_TIME:  
@@ -123,48 +136,63 @@ try:
 
           #     y = y + 1
 
+          #### TODO - Just use the IF's for the index, and grab it in one go down below instead of all this copy paste..
+          #### wasn't an issue until the caching was added...
+          
           for row in chart:
               x = 0
               for pixel in row.split(","):
                     if pixel == '0':
                       unicornhatmini.set_pixel(x, y, colours["0"]["r"], colours["0"]["g"], colours["0"]["b"])
+                      if x == 17 and y == day_index:
+                        todayR = colours["0"]["r"]
+                        todayG = colours["0"]["g"]
+                        todayB = colours["0"]["b"]
                     elif pixel == '1' or pixel == '2':
                       unicornhatmini.set_pixel(x, y, colours["1-2"]["r"], colours["1-2"]["g"], colours["1-2"]["b"])
+                      if x == 17 and y == day_index:
+                        todayR = colours["1-2"]["r"]
+                        todayG = colours["1-2"]["g"]
+                        todayB = colours["1-2"]["b"]
                     elif pixel == '3' or pixel == '4' or pixel == '5':
                       unicornhatmini.set_pixel(x, y, colours["3-5"]["r"], colours["3-5"]["g"], colours["3-5"]["b"])
+                      if x == 17 and y == day_index:
+                        todayR = colours["3-5"]["r"]
+                        todayG = colours["3-5"]["b"]
+                        todayB = colours["3-5"]["g"]
                     elif pixel == '6' or pixel == '7' or pixel == '8' or pixel == '9' or pixel == '10':
                       unicornhatmini.set_pixel(x, y, colours["6-10"]["r"], colours["6-10"]["g"], colours["6-10"]["b"])
+                      if x == 17 and y == day_index:
+                        todayR = colours["6-10"]["r"]
+                        todayG = colours["6-10"]["b"]
+                        todayB = colours["6-10"]["g"]
                     elif '11' or pixel == '12' or pixel == '13' or pixel == '14' or pixel == '15':
                       unicornhatmini.set_pixel(x, y, colours["11-15"]["r"], colours["11-15"]["g"], colours["11-15"]["b"])
+                      if x == 17 and y == day_index:
+                        todayR = colours["11-15"]["r"]
+                        todayG = colours["11-15"]["b"]
+                        todayB = colours["11-15"]["g"]
                     else:
                       unicornhatmini.set_pixel(x, y, colours["more"]["r"], colours["more"]["g"], colours["more"]["b"])
-                    
+                      if x == 17 and y == day_index:
+                        todayR = colours["more"]["r"]
+                        todayG = colours["more"]["b"]
+                        todayB = colours["more"]["g"]
                     x = x + 1
-                    unicornhatmini.show()
               
               y = y + 1
               
               # Reset the clock
               timecount = 0
-
-        # Monday = 0
-        day_as_int = datetime.now().weekday()
-        #print("Day: " + str(day_as_int))
-        
-        # Sunday is the top row for us, so we start there. 
-        # add one to bump the index along, if it's 8 - put it to zero
-        # day now lines up with our rows
-        day_index = day_as_int + 1
-        if day_index == 8:
-          day_index = 0
-          
-        #print("Index: " + str(day_index))
         
         # Turn off today every other second
         if (timecount % 2) == 0:
           unicornhatmini.set_pixel(16, day_index, 0, 0, 0)
+          
+        else:
+          unicornhatmini.set_pixel(16, day_index, todayR, todayG, todayB)
           unicornhatmini.show()
-
+        
         # Wait for a second
         timecount = timecount + 1
         time.sleep(1)
