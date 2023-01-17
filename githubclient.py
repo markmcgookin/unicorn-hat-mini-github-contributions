@@ -137,7 +137,7 @@ try:
         if day_index == 8:
           day_index = 0
           
-        print("Day: " + str(day_as_int))
+        print("Index: " + str(day_index))
         
         # Turn off today every other second
         if (timecount % 2) == 0:
