@@ -127,7 +127,7 @@ try:
               timecount = 0
               
         # Monday = 0
-        day_as_int = datetime.weekday()
+        day_as_int = datetime.now().weekday()
         
         # Sunday is the top row for us, so we start there. 
         # add one to bump the index along, if it's 8 - put it to zero
