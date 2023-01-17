@@ -86,7 +86,7 @@ githubUrl = "https://api.github.com/graphql"
 bearerToken = "Bearer " + usersecrets["githubtoken"]
 
 ## Using the live github API
-timecount = 0
+timecount = POLL_TIME
 try:
     while True:
 
