@@ -99,7 +99,7 @@ try:
         # Sunday is the top row for us, so we start there. 
         # add one to bump the index along, if it's 8 - put it to zero
         # day now lines up with our rows
-        day_index = day_as_int
+        day_index = day_as_int + 1
         if day_index == 7:
           day_index = 0
       
