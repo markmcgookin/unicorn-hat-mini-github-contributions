@@ -106,14 +106,13 @@ try:
         # Has it been 5 mins since our last github poll?
         if timecount >= POLL_TIME:
           
-          # Reset the clock
-          timecount = 0
-          
           resetScreen()
           try: 
             githubResult = requests.post(githubUrl, json={'query': githubQuery}, headers={'Authorization': bearerToken})
           except:
             # Basically, do nothing, skip this poll and try again in a bit.
+            # Reset the clock
+            timecount = 0
             print('Got an error polling')
             time.sleep(1)
             continue
@@ -198,7 +197,10 @@ try:
                     x = x + 1
               
               y = y + 1
-        
+              
+          # Reset the clock
+          timecount = 0
+
         # Turn off today every other second
         if (timecount % 2) == 0:
           unicornhatmini.set_pixel(16, day_index, 0, 0, 0)
@@ -209,7 +211,7 @@ try:
           print(str(todayG))
           print(str(todayB))
           #print('tock')
-        
+          
         unicornhatmini.show()
         
         # Wait for a second
