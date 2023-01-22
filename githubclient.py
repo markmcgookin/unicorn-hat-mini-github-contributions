@@ -202,6 +202,8 @@ try:
           timecount = 0
 
         # Turn off today every other second
+        print("Day: " + str(day_index))
+        
         if (timecount % 2) == 0:
           unicornhatmini.set_pixel(16, day_index, 0, 0, 0)
           #print('tick')
